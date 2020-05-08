@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/Layout/Navbar";
+import Footer from "./components/Layout/Footer";
+import Posts from "./components/post/Posts";
+import Pagination from "./components/Pagination";
+import { Provider } from "react-redux";
+import store from "./store";
+import Post from "./components/post/Post";
 
-function App() {
+import "./App.css";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div classname='App'>
+          <Navbar />
+          <div className='container'>
+            <Posts />
+            <Switch>
+              <Route exact path='/post/:id' component={Post} />
+            </Switch>
+            <Footer />
+          </div>
+        </div>
+      </Router>
+    </Provider>
   );
-}
+};
 
 export default App;
