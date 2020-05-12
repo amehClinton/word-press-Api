@@ -17,7 +17,8 @@ const App = () => {
         <div classname='App'>
           <Navbar />
           <div className='container'>
-            <Posts />
+            <Route exact path='/' component={Posts} />
+
             <Switch>
               <Route exact path='/post/:id' component={Post} />
             </Switch>

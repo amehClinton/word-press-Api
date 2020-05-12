@@ -12,9 +12,7 @@ export const getPosts = () => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.get(
-      "https://epower.ng/wp-json/wp/v2/posts?per_page=6&sort=created:asc"
-    );
+    const res = await axios.get("https://epower.ng/wp-json/wp/v2/posts/");
 
     dispatch({
       type: GET_POSTS,

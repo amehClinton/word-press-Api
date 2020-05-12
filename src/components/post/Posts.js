@@ -4,6 +4,8 @@ import Spinner from "../Layout/Spinner";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+import { Link } from "react-router-dom";
+
 import { getPosts } from "../../actions/postActions";
 
 const Posts = ({ posts, loading, getPosts }) => {
@@ -18,9 +20,15 @@ const Posts = ({ posts, loading, getPosts }) => {
     return (
       <div className='grid-3'>
         {" "}
-        {posts.map((post) => (
-          <PostItem key={post.id} post={post} />
-        ))}
+        {posts.map((post) => {
+          return (
+            <div>
+              <Link to={`/post/${post.id}`}>
+                <PostItem key={post.id} post={post} />
+              </Link>
+            </div>
+          );
+        })}
       </div>
     );
   }
