@@ -1,10 +1,4 @@
-import {
-  GET_POSTS,
-  GET_POST,
-  SET_LOADING,
-  POSTS_ERROR,
-  POST_ERROR,
-} from "./types";
+import { GET_POSTS, SET_LOADING, POSTS_ERROR } from "./types";
 import axios from "axios";
 
 // Get All Posts
@@ -12,7 +6,9 @@ export const getPosts = () => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.get("https://epower.ng/wp-json/wp/v2/posts/");
+    const res = await axios.get(
+      "https://epower.ng/wp-json/wp/v2/posts?per_page=5&sort=created:asc"
+    );
 
     dispatch({
       type: GET_POSTS,
@@ -21,25 +17,6 @@ export const getPosts = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: POSTS_ERROR,
-      payload: err.response,
-    });
-  }
-};
-
-// Get Single Post
-export const getPost = (id) => async (dispatch) => {
-  try {
-    setLoading();
-
-    const res = await axios.get(`https://epower.ng/wp-json/wp/v2/posts/${id}`);
-
-    dispatch({
-      type: GET_POST,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
       payload: err.response,
     });
   }
