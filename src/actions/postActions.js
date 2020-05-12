@@ -7,7 +7,7 @@ export const getPosts = () => async (dispatch) => {
     setLoading();
 
     const res = await axios.get(
-      "https://epower.ng/wp-json/wp/v2/posts?per_page=5&sort=created:asc"
+      "https://epower.ng/wp-json/wp/v2/posts?per_page=6&sort=created:asc"
     );
 
     dispatch({
