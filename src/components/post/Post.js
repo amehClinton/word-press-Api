@@ -1,15 +1,12 @@
-import React, { useEffect } from "react";
-import Spinner from "../Layout/Spinner";
-import PropTypes from "prop-types";
-import { formatter } from "../../utils/Formatter";
-
+import React from "react";
 import Moment from "react-moment";
 import "moment-timezone";
 
 import { connect } from "react-redux";
 
-const Post = ({ post: { title, modified_gmt, featured_image, excerpt } }) => {
+const Post = ({ post: { title, modified_gmt, featured_image, content } }) => {
   //console.log(post);
+
   return (
     <div>
       <div className='card-title'>{title.rendered}</div>
@@ -21,7 +18,9 @@ const Post = ({ post: { title, modified_gmt, featured_image, excerpt } }) => {
       <div>
         <img src={featured_image} alt='' className='card-img' />
       </div>
-      <div> {excerpt.rendered}</div>
+      <div>
+        <pre>{content.rendered}</pre>{" "}
+      </div>
     </div>
   );
 };

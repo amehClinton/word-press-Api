@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 import Footer from "./components/Layout/Footer";
 import Posts from "./components/post/Posts";
-import Pagination from "./components/Pagination";
 import { Provider } from "react-redux";
 import store from "./store";
 import Post from "./components/post/Post";

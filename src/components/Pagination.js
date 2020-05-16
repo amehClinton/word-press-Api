@@ -1,25 +1,29 @@
 import React from 'react';
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
+function Pagination({ pages, ShowPage }) {
   return (
-    <nav>
-      <ul className='pagination'>
-        {pageNumbers.map(number => (
-          <li key={number} className='page-item'>
-            <a onClick={() => paginate(number)} href='!#' className='page-link'>
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="row justify-content-center">
+      <nav>
+        <ul className="pagination">
+          {
+            Array(pages).fill(0).map(
+            (number, index) => 
+            <li className="page-item" key={index}>
+              <div
+                style={{cursor: 'pointer'}} 
+                className="page-link" 
+                onClick={() => ShowPage(index + 1)} 
+                >
+
+              { index + 1 }
+
+              </div>
+            </li>)
+          }
+        </ul>
+      </nav>
+    </div>
   );
-};
+}
 
 export default Pagination;
